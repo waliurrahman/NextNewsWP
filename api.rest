@@ -1,0 +1,38 @@
+# GET http://localhost:3000/api/news
+
+###
+
+## GET http://example.com/topics/1 HTTP/1.1
+
+### 
+
+# Add News
+POST http://localhost:3000/api/news
+content-type: application/json
+
+{
+    "title": "Cricket News Dummy Title",
+    "content": "This is some details about the news",
+    "categories": [
+        {"_id": "63dbb578d6e978356009ac59"}
+    ],
+    "media": "63ddea4ea5a8238c99f2ad8a"
+}
+
+# # Add Category
+# POST http://localhost:3000/api/categories
+# content-type: application/json
+
+# {
+#     "title": "Breaking News"
+# }
+
+
+# # Add Media
+# POST http://localhost:3000/api/media
+# content-type: application/json
+
+# {
+#     "title": "Cricket news",
+#     "src": "https://images.pexels.com/photos/3800517/pexels-photo-3800517.jpeg"
+# }
