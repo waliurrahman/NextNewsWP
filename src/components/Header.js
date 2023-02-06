@@ -7,7 +7,7 @@ const Header = ({categories}) => {
   return (
     <>
         <Head>
-            <title>NextNEWS</title>
+            <title> NextNEWS</title>
             <meta name="description" content="Generate new niche ideas for businesses, content creators and social media" />
             <meta name="viewport" content="width=device-width, initial-scale=1" />
             <link rel="icon" href="/favicon.ico" />
