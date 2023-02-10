@@ -25,7 +25,7 @@ export default function Home({ news, categories, media }) {
       <main className="container flex">
         <div className="w-3/4 p-5 flex gap-5">
           <div className="lead-news w-1/2 p-2 border-2">
-            <NewsLoop categorySlug='lead-news' categories={categories} news={news} media={media} />
+            <NewsLoop categorySlug='lead-news' categories={categories} news={news} media={media} items={1} />
           </div>
           <div className="w-1/2 p-2 border-2">
             sdfad
