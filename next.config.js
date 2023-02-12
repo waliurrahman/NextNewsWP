@@ -5,7 +5,7 @@ const prismaClient = new PrismaClient()
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['images.pexels.com'],
+    domains: ['images.pexels.com', 'scx1.b-cdn.net'],
   },
   // env: {
   //   PRISMA_ENDPOINT: process.env.PRISMA_ENDPOINT,

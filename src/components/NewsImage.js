@@ -2,7 +2,7 @@ import Image from "next/image"
 
 const NewsImage = ({ media, newsPost, width, height, quality }) => {
 
-    const convertImage = (w, h) => `
+  const convertImage = (w, h) => `
     <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <defs>
         <linearGradient id="g">
@@ -17,29 +17,38 @@ const NewsImage = ({ media, newsPost, width, height, quality }) => {
     </svg>`;
 
 
-    const toBase64 = (str) =>
-        typeof window === 'undefined'
-            ? Buffer.from(str).toString('base64')
-            : window.btoa(str);
+  const toBase64 = (str) =>
+    typeof window === 'undefined'
+      ? Buffer.from(str).toString('base64')
+      : window.btoa(str);
 
-    return (
+  return (
 
-        media.filter(img => img._id.includes(newsPost.media[0])).map((img) => (
-            <Image
-                src={img.src}
-                alt={img.title}
-                width={width ? width : '400'}
-                height={height ? height : '300'}
-                style={{ color: 'red' }}
-                quality={quality ? quality : '40'}
-                placeholder="blur"
-                blurDataURL={`data:image/svg+xml;base64,${toBase64(
-                    convertImage(700, 475)
-                )}`}
-            />
-        ))
-
-    )
+    newsPost.media[0]
+      ? media.filter(img => img._id.includes(newsPost.media[0])).map((img) => (
+        <Image
+          src={img.src}
+          alt={img.title}
+          width={width ? width : '400'}
+          height={height ? height : '300'}
+          style={{ color: 'red', height: 'fit-content' }}
+          quality={quality ? quality : '40'}
+          placeholder="blur"
+          blurDataURL={`data:image/svg+xml;base64,${toBase64(
+            convertImage(700, 475)
+          )}`}
+        />
+      ))
+      : <Image
+        className={`w-${width ? `${width}px` : 'auto'} h-${height ? `${height}px` : 'auto'} bg-slate-500 block`}        
+          src={`nextnews-placeholder.svg`}
+          alt={`No Image Found`}
+          width={width ? width : '400'}
+          height={height ? height : '300'}
+          style={{ color: 'red' }}
+          quality={quality ? quality : '40'}
+        />
+  )
 }
 
 export default NewsImage

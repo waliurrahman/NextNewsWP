@@ -25,22 +25,22 @@ export default function Home({ news, categories, media }) {
       <main className="container flex">
         <div className="w-3/4 p-5 flex gap-5">
           <div className="lead-news w-1/2 p-2 border-2">
-            <NewsLoop categorySlug='lead-news' categories={categories} news={news} media={media} items={1} />
+            {/* Available Props:
+            categories, news, media, categorySlug, items, hasImage, hasDetails, imageWrap, titleStyle, height, width, wordCount, titleCount */}
+            <NewsLoop categorySlug='lead-news' categories={categories} news={news} media={media} items={1} titleStyle={'text-xl font-bold'} />
           </div>
           <div className="w-1/2 p-2 border-2">
-            sdfad
+            <h2 className="font-bold text-2xl text-white bg-slate-500 py-1 px-3">National</h2>
+            {/* Available Props:
+            categories, news, media, categorySlug, items, hasImage, hasDetails, imageWrap, titleStyle, height, width, wordCount, titleCount */}
+              <NewsLoop categorySlug={'national'} categories={categories} media={media} news={news} items={3} imageWrap={true} hasImage={true} hasDetails={true} wordCount={15} titleStyle={'text-lg font-bold'} height={70} width={70} />
           </div>
         </div>
         <div className="sidebar w-1/4 p-5">
           <h2 className="font-black text-lg border-dashed border-b-[1px] border-gray-600">Latest News</h2>
-
-          {
-            news.map((newsPost) => (
-              <ul>
-                <li className="border-dashed border-b-[1px] border-gray-600" key={newsPost._id}>{newsPost.title}</li>
-              </ul>
-            ))
-          }
+              {/* Available Props:
+            categories, news, media, categorySlug, items, hasImage, hasDetails, imageWrap, titleStyle, height, width, wordCount, titleCount */}
+              <NewsLoop categories={categories} media={media} news={news} hasImage={true} imageWrap={true} hasDetails={false} height={50} width={50} titleStyle={'text-sm font-bold border-dashed border-b-[1px] border-gray-600 my-2'} titleCount={15} />
         </div>
       </main>
     </>

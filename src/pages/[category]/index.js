@@ -18,9 +18,9 @@ const newsCategory = ({ news, categories, media }) => {
             </Head>
             <Header categories={categories} />
 
-            <main className="container flex">
+            <main className="container">
 
-                <div className="w-3/4 p-5 gap-5">
+                <div className="p-5 gap-5">
 
                     {
                         categories.filter(category => category.slug === categorySlug).map(category => {
@@ -32,13 +32,11 @@ const newsCategory = ({ news, categories, media }) => {
                             )
                         })
                     }
-                    <div className="grid grid-cols-1">
-                        <NewsLoop categorySlug={categorySlug} categories={categories} news={news} media={media} items={20} />
+                    <div className="grid grid-cols-2 gap-4">
+                        {/* Available Props:
+                        categories, news, media, categorySlug, items, hasImage, hasDetails, imageWrap, style, height, width, wordCount  */}
+                        <NewsLoop categorySlug={categorySlug} categories={categories} news={news} media={media} imageWrap={true} items={20} width={125} height={100} wordCount={22} titleCount={10} />
                     </div>
-
-                </div>
-                <div className="sidebar w-1/4 p-5">
-                    <h2 className="font-black text-lg border-dashed border-b-[1px] border-gray-600">Category Sidebar</h2>
 
                 </div>
             </main>
