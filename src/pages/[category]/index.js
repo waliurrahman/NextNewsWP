@@ -34,7 +34,7 @@ const newsCategory = ({ news, categories, media }) => {
                     }
                     <div className="grid grid-cols-2 gap-4">
                         {/* Available Props:
-                        categories, news, media, categorySlug, items, hasImage, hasDetails, imageWrap, style, height, width, wordCount  */}
+                        categories, news, media, categorySlug, items, hasImage, hasDetails, imageWrap, divClass, titleClass, height, width, wordCount, titleCount */}
                         <NewsLoop categorySlug={categorySlug} categories={categories} news={news} media={media} imageWrap={true} items={20} width={125} height={100} wordCount={22} titleCount={10} />
                     </div>
 

@@ -1,39 +1,39 @@
 # GET http://localhost:3000/api/news
 
 
-## Add Media
-#############
+# Add Media
+############
 
 # POST http://localhost:3000/api/media
 # content-type: application/json
 
 # {
-#     "title": "AI Will not replace you but",
-#     "src": "/images/ai-will-not-replace-you-but.jpg"
+#     "title": "Sylhet vs Comilla BPL",
+#     "src": "/images/sylhet-comilla-bpl.png"
 # }
 
 ## Add News
 ###########
 
-POST http://localhost:3000/api/news
-content-type: application/json
+# POST http://localhost:3000/api/news
+# content-type: application/json
 
-{
-    "title": "AI will not replace you, but people who use it may",
-    "content": "Artificial intelligence (AI) has been a hot topic for debate in recent times and has generated a lot of hype and speculation. Some believe that AI will soon replace most jobs and leave many people unemployed. However, this is a myth and a misunderstanding of the true capabilities and limitations of AI. Let's take a look at why AI will not replace your job and why there is no need to fear its integration into the workforce. First, AI is still in the early stages of development and has limited capabilities. It is not yet advanced enough to replace human intelligence and creativity. For example, AI can process and analyse large amounts of data quickly, but it cannot match human intuition, empathy, and critical thinking skills. These are unique human abilities that cannot be replicated by AI. Moreover, AI is still not capable of dealing with unstructured data and making decisions in complex situations, which are essential tasks for many jobs.",
-    "categories": [
-        {
-            "_id": "63dbb572d6e978356009ac57"
-        },
-        {
-            "_id": "63dbb560d6e978356009ac53"
-        },
-        {
-            "_id": "63e8e3737541ae7f071f950b"
-        }
-    ],
-    "media": "63e8f168ef2106dd81fea9b0"
-}
+# {
+#     "title": "What is Lorem Ipsum?",
+#     "content": "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.",
+#     "categories": [
+#         {
+#             "_id": "63dbb560d6e978356009ac53"
+#         },
+#         {
+#             "_id": "63dbb56bd6e978356009ac55"
+#         },
+#         {
+#             "_id": "63dbb572d6e978356009ac57"
+#         }
+#     ],
+#     "media": "63e91be6d9d570811c5c22a0"
+# }
 
 
 # # Add Category

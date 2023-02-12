@@ -26,21 +26,21 @@ export default function Home({ news, categories, media }) {
         <div className="w-3/4 p-5 flex gap-5">
           <div className="lead-news w-1/2 p-2 border-2">
             {/* Available Props:
-            categories, news, media, categorySlug, items, hasImage, hasDetails, imageWrap, titleStyle, height, width, wordCount, titleCount */}
-            <NewsLoop categorySlug='lead-news' categories={categories} news={news} media={media} items={1} titleStyle={'text-xl font-bold'} />
+            categories, news, media, categorySlug, items, hasImage, hasDetails, imageWrap, divClass, titleClass, height, width, wordCount, titleCount */}
+            <NewsLoop categorySlug='lead-news' categories={categories} news={news} media={media} items={1} titleClass={'text-xl font-bold'} />
           </div>
           <div className="w-1/2 p-2 border-2">
             <h2 className="font-bold text-2xl text-white bg-slate-500 py-1 px-3">National</h2>
             {/* Available Props:
-            categories, news, media, categorySlug, items, hasImage, hasDetails, imageWrap, titleStyle, height, width, wordCount, titleCount */}
-              <NewsLoop categorySlug={'national'} categories={categories} media={media} news={news} items={3} imageWrap={true} hasImage={true} hasDetails={true} wordCount={15} titleStyle={'text-lg font-bold'} height={70} width={70} />
+            categories, news, media, categorySlug, items, hasImage, hasDetails, imageWrap, divClass, titleClass, height, width, wordCount, titleCount */}
+              <NewsLoop categorySlug={'national'} categories={categories} media={media} news={news} items={3} imageWrap={true} hasImage={true} hasDetails={true} wordCount={15} titleClass={'text-lg font-bold'} divClass={'border-dashed border-b-[1px] border-gray-300 py-2'} height={70} width={70} />
           </div>
         </div>
         <div className="sidebar w-1/4 p-5">
           <h2 className="font-black text-lg border-dashed border-b-[1px] border-gray-600">Latest News</h2>
               {/* Available Props:
-            categories, news, media, categorySlug, items, hasImage, hasDetails, imageWrap, titleStyle, height, width, wordCount, titleCount */}
-              <NewsLoop categories={categories} media={media} news={news} hasImage={true} imageWrap={true} hasDetails={false} height={50} width={50} titleStyle={'text-sm font-bold border-dashed border-b-[1px] border-gray-600 my-2'} titleCount={15} />
+            categories, news, media, categorySlug, items, hasImage, hasDetails, imageWrap, divClass, titleClass, height, width, wordCount, titleCount */}
+              <NewsLoop categories={categories} media={media} news={news} hasImage={true} imageWrap={true} hasDetails={false} height={50} width={50} titleClass={'text-sm font-bold'} divClass={'border-dashed border-b-[1px] border-gray-300 py-2'} titleCount={15} />
         </div>
       </main>
     </>

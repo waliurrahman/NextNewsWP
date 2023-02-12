@@ -2,9 +2,10 @@ import Head from 'next/head'
 import Header from '@/components/Header'
 import { useRouter } from 'next/router'
 import React from 'react'
+import NewsLoop from '@/components/NewsLoop'
 
 const singleNews = ({ news, categories, media }) => {
-    const newsSlug = useRouter().query
+    const newsSlug = useRouter().query.news
     let newsId
     return (
         <>
@@ -20,21 +21,8 @@ const singleNews = ({ news, categories, media }) => {
 
                 <div className="w-3/4 p-5 gap-5">
 
-
-                    <div className="container bg-gray-600 p-4">
-                        <h2 className="text-2xl font-bold">Category: {category.title}</h2>
-                    </div>
-
-                    <div className="grid grid-cols-2">
-                        {
-                            news.filter(post => post.categories.includes(categoryId)).reverse().slice(0, 10).map((newsPost) => (
-
-                                <div className="p-2 border-2 gap-5" key={newsPost._id}>
-                                    <h3 className="text-xl font-bold" key={newsPost._id}>{newsPost.title}</h3>
-                                    <p>{newsPost.content}</p>
-                                </div>
-                            ))
-                        }
+                    <div className="grid grid-cols-1">
+                    <NewsLoop newsSlug={newsSlug} categories={categories} news={news} media={media} imageWrap={false} items={1} width={1000} height={600} titleClass={'text-4xl py-3 font-bold'} titleCount={200} wordCount={9999} />
                     </div>
 
                 </div>
