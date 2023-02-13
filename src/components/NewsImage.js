@@ -41,7 +41,7 @@ const NewsImage = ({ media, newsPost, width, height, quality }) => {
       ))
       : <Image
         className={`w-${width ? `${width}px` : 'auto'} h-${height ? `${height}px` : 'auto'} bg-slate-500 block`}        
-          src={`nextnews-placeholder.svg`}
+          src={`/nextnews-placeholder.svg`}
           alt={`No Image Found`}
           width={width ? width : '400'}
           height={height ? height : '300'}

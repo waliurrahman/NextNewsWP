@@ -1,11 +1,9 @@
 import Footer from "./Footer";
-// import Header from "./Header";
 
-const Layout = ({ children }) => {
+const Layout = ({ children, news, media, categories }) => {
   return (
     <div className="h-full w-full backdrop-blur-md bg-white container">
-      {/* <Header categories={categories} /> */}
-
+            
       <div className="">
         {children}
       </div>

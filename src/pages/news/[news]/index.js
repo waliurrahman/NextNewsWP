@@ -15,20 +15,20 @@ const singleNews = ({ news, categories, media }) => {
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-            <Header categories={categories} />
+            <Header categories={categories} news={news} media={media} />
 
-            <main className="container flex">
+            <main className="single-news container flex">
 
-                <div className="w-3/4 p-5 gap-5">
+                <div className="content w-3/4 p-5 gap-5">
 
                     <div className="grid grid-cols-1">
-                    <NewsLoop newsSlug={newsSlug} categories={categories} news={news} media={media} imageWrap={false} items={1} width={1000} height={600} titleClass={'text-4xl py-3 font-bold'} titleCount={200} wordCount={9999} />
+                        <NewsLoop newsSlug={newsSlug} categories={categories} news={news} media={media} imageWrap={false} items={1} width={400} height={300} titleClass={'text-3xl py-3 font-bold'} divClass={'float-left'} titleCount={200} wordCount={9999} />
                     </div>
 
                 </div>
                 <div className="sidebar w-1/4 p-5">
-                    <h2 className="font-black text-lg border-dashed border-b-[1px] border-gray-600">Category Sidebar</h2>
-
+                    <h2 className="font-black text-xl border-dashed border-b-[1px] border-gray-600">From This Category</h2>
+                    <NewsLoop categories={categories} news={news} media={media} imageWrap={true} hasDetails={false} items={4} width={100} height={40} titleClass={'text-md py-3 font-bold'} divClass={'float-left'} titleCount={10} wordCount={50} />
                 </div>
             </main>
         </>
