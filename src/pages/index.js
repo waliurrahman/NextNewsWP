@@ -28,7 +28,7 @@ export default function Home({ news, categories, media }) {
             <div className="lead-news w-1/2 p-2 border-2">
               {/* Available Props:
               categories, news, media, categorySlug, items, hasImage, hasDetails, imageWrap, divClass, titleClass, height, width, wordCount, titleCount */}
-              <NewsLoop categorySlug='lead-news' categories={categories} news={news} media={media} items={1} titleClass={'text-2xl py-2 font-bold'} imageFirst={true} wordCount={45} />
+              <NewsLoop categorySlug='lead-news' categories={categories} news={news} media={media} items={1} titleClass={'text-2xl py-2 font-bold'} imageFirst={true} wordCount={45} width={500} />
             </div>
             <div className="w-1/2 p-2 border-2">
               <h2 className="font-bold text-2xl text-white bg-green-700 py-1 px-3">National</h2>
