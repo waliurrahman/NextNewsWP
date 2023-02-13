@@ -5,7 +5,7 @@ const { News } = require('../../../../models/News');
 connectDB();
 
 
-const handleCategories = async (req, res) => {
+const handleNews = async (req, res) => {
   switch (req.method) {
     case 'GET':
       try {
@@ -56,4 +56,4 @@ const handleCategories = async (req, res) => {
   }
 };
 
-export default handleMedia;
+export default handleNews;

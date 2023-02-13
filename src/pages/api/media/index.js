@@ -5,7 +5,7 @@ const { Media } = require('../../../../models/News');
 connectDB();
 
 
-const handleCategories = async (req, res) => {
+const handleMedia = async (req, res) => {
   switch (req.method) {
     case 'GET':
       try {
