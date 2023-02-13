@@ -27,6 +27,7 @@ const NewsImage = ({ media, newsPost, width, height, quality }) => {
     newsPost.media[0]
       ? media.filter(img => img._id.includes(newsPost.media[0])).map((img) => (
         <Image
+          key={img._id}
           src={img.src}
           alt={img.title}
           width={width ? width : '400'}
@@ -40,14 +41,14 @@ const NewsImage = ({ media, newsPost, width, height, quality }) => {
         />
       ))
       : <Image
-        className={`w-${width ? `${width}px` : 'auto'} h-${height ? `${height}px` : 'auto'} bg-slate-500 block`}        
-          src={`/nextnews-placeholder.svg`}
-          alt={`No Image Found`}
-          width={width ? width : '400'}
-          height={height ? height : '300'}
-          style={{ color: 'red' }}
-          quality={quality ? quality : '40'}
-        />
+        className={`w-${width ? `${width}px` : 'auto'} h-${height ? `${height}px` : 'auto'} bg-slate-500 block`}
+        src={`/nextnews-placeholder.svg`}
+        alt={`No Image Found`}
+        width={width ? width : '400'}
+        height={height ? height : '300'}
+        style={{ color: 'red' }}
+        quality={quality ? quality : '40'}
+      />
   )
 }
 

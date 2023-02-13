@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import NewsLoop from '@/components/NewsLoop'
 
-const singleNews = ({ news, categories, media }) => {
+const SingleNews = ({ news, categories, media }) => {
     const newsSlug = useRouter().query.news
     let newsId
     return (
@@ -36,7 +36,7 @@ const singleNews = ({ news, categories, media }) => {
     )
 }
 
-export default singleNews
+export default SingleNews
 
 export const getServerSideProps = async (context) => {
     const [resPosts, resCats, resMedia] = await Promise.all([

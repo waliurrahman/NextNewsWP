@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import NewsLoop from '@/components/NewsLoop'
 
-const newsCategory = ({ news, categories, media }) => {
+const NewsCategory = ({ news, categories, media }) => {
     const categorySlug = useRouter().query.category
 
     let categoryId
@@ -26,7 +26,7 @@ const newsCategory = ({ news, categories, media }) => {
                         categories.filter(category => category.slug === categorySlug).map(category => {
                             categoryId = category._id
                             return (
-                                <div className="container bg-gray-200 p-4">
+                                <div key={category._id} className="container bg-gray-200 p-4">
                                     <h2 className="text-2xl font-bold">Category: {category.title}</h2>
                                 </div>
                             )
@@ -45,7 +45,7 @@ const newsCategory = ({ news, categories, media }) => {
     )
 }
 
-export default newsCategory
+export default NewsCategory
 
 export const getServerSideProps = async (context) => {
     const [resPosts, resCats, resMedia] = await Promise.all([

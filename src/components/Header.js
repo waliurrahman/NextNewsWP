@@ -27,7 +27,7 @@ const Header = ({ categories, news, media }) => {
       }
       <div className="text-center p-7">
         <h1 className="logo text-5xl font-bold text-gray-700"><Link href={`/`}>Next<span className="text-red-700">NEWS</span></Link></h1>
-        <h3 className="text-sm text-gray-500">Fastest NewsCMS You'd Ever Need!</h3>
+        <h3 className="text-sm text-gray-500">Fastest NewsCMS You Would Ever Need!</h3>
       </div>
 
       <Disclosure as="nav" className="bg-gray-800">

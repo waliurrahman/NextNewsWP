@@ -68,7 +68,7 @@ const NewsLoop = ({ categories, news, media, categorySlug, items, offset, hasIma
                     </>
 
                     :
-                    <Link href={`/news/${newsPost.slug}`}>
+                    <Link key={newsPost._id} href={`/news/${newsPost.slug}`}>
                     {imageWrap === true ?
                         <div className={divClass ? divClass : 'w-full'} key={newsPost._id}>
                             {hasDetails === false || imageFirst === true ? null :
