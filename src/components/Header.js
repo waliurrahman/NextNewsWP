@@ -30,7 +30,7 @@ const Header = ({ categories, news, media }) => {
         <h3 className="text-sm text-gray-500">Fastest NewsCMS You'd Ever Need!</h3>
       </div>
 
-      <Disclosure as="nav" className="bg-blue-800">
+      <Disclosure as="nav" className="bg-gray-800">
         {({ open }) => (
           <>
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 text-white">
