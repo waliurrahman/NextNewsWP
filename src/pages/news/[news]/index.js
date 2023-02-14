@@ -40,7 +40,7 @@ export default SingleNews
 
 export const getServerSideProps = async (context) => {
     const [resPosts, resCats, resMedia] = await Promise.all([
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/news`),
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts`),
         fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`),
         fetch(`${process.env.NEXT_PUBLIC_API_URL}/media`)
     ])

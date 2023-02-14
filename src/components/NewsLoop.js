@@ -2,13 +2,19 @@ import Link from 'next/link';
 import React from 'react'
 import NewsImage from './NewsImage';
 
-
 const NewsLoop = ({ categories, news, media, categorySlug, items, offset, hasImage, hasDetails, imageWrap, divClass, titleClass, height, width, wordCount, titleCount, newsSlug, imageFirst }) => {
+
     let categoryId;
-    categories.filter(category => category.slug === categorySlug).map(category => {
-        categoryId = category._id
+    // categories.map(category => (
+    //     decodeURIComponent(category.slug) === categorySlug ?
+    //         categoryId = category.id
+    //         : null
+    // ))
+
+    categories.filter(category => decodeURIComponent(category.slug) === categorySlug).map(category => {
+        categoryId = category.id
     })
-    // console.log(newsSlug)
+
     return (
         news
             .filter(post =>
@@ -19,13 +25,14 @@ const NewsLoop = ({ categories, news, media, categorySlug, items, offset, hasIma
             .reverse()
             .slice(offset || 0, items || 5)
             .map((newsPost) => (
+
                 newsSlug ?
                     <>
                         {imageWrap === true ?
-                            <div className={divClass ? divClass : 'w-full'} key={newsPost._id}>
+                            <div className={divClass ? divClass : 'w-full'} key={newsPost.id}>
                                 {hasDetails === false || imageFirst === true ? null :
                                     <h3 className={titleClass ? titleClass : 'font-bold text-xl'}>
-                                        {newsPost.title.split(" ").slice(0, titleCount ? titleCount : 20).join(" ")}
+                                        {newsPost.title.rendered.split(" ").slice(0, titleCount ? titleCount : 20).join(" ")}
                                     </h3>
                                 }
                                 <div className="flex items-center gap-3">
@@ -33,97 +40,96 @@ const NewsLoop = ({ categories, news, media, categorySlug, items, offset, hasIma
                                 media, newsPost, width, height, quality */}
                                     <NewsImage media={media} newsPost={newsPost} width={width} height={height} />
                                     {hasDetails === false || imageFirst === true ?
-                                            <h3 className={titleClass ? titleClass : 'font-bold text-xl'}>
-                                                {newsPost.title.split(" ").slice(0, titleCount ? titleCount : 20).join(" ")}
-                                            </h3>
-                                            :
-                                            <p>
-                                                {newsPost.content.split(" ").slice(0, wordCount ? wordCount : 20).join(" ")}
-                                            </p>
+                                        <h3 className={titleClass ? titleClass : 'font-bold text-xl'}>
+                                            {newsPost.title.rendered.split(" ").slice(0, titleCount ? titleCount : 20).join(" ")}
+                                        </h3>
+                                        :
+                                        <p>
+                                            {newsPost.content.rendered.split(" ").slice(0, wordCount ? wordCount : 20).join(" ")}
+                                        </p>
                                     }
                                 </div>
                             </div>
 
                             :
-                            <div className={divClass ? divClass : 'w-full'} key={newsPost._id}>
+                            <div className={divClass ? divClass : 'w-full'} key={newsPost.id}>
                                 {imageFirst === true ? null :
                                     <h3 className={titleClass ? titleClass : 'font-bold text-xl'}>
-                                        {newsPost.title.split(" ").slice(0, titleCount ? titleCount : 20).join(" ")}
+                                        {newsPost.title.rendered.split(" ").slice(0, titleCount ? titleCount : 20).join(" ")}
                                     </h3>
                                 }
-                                
-                                {hasImage === false ? null : 
-                                <NewsImage media={media} newsPost={newsPost} width={width} height={width} />}
-                                
-                                {imageFirst === true ? 
+
+                                {hasImage === false ? null :
+                                    <NewsImage media={media} newsPost={newsPost} width={width} height={width} />}
+
+                                {imageFirst === true ?
                                     <h3 className={titleClass ? titleClass : 'font-bold text-xl'}>
-                                        {newsPost.title.split(" ").slice(0, titleCount ? titleCount : 20).join(" ")}
+                                        {newsPost.title.rendered.split(" ").slice(0, titleCount ? titleCount : 20).join(" ")}
                                     </h3>
                                     : null
                                 }
-                                {hasDetails === false ? null : <p>{newsPost.content.split(" ").slice(0, wordCount ? wordCount : 20).join(" ")}</p>}
+                                {hasDetails === false ? null : <p>{newsPost.content.rendered.split(" ").slice(0, wordCount ? wordCount : 20).join(" ")}</p>}
 
                             </div>
                         }
                     </>
-
                     :
-                    <Link key={newsPost._id} href={`/news/${newsPost.slug}`}>
-                    {imageWrap === true ?
-                        <div className={divClass ? divClass : 'w-full'} key={newsPost._id}>
-                            {hasDetails === false || imageFirst === true ? null :
-                                <h3 className={titleClass ? titleClass : 'font-bold text-xl'}>
-                                    {newsPost.title.split(" ").slice(0, titleCount ? titleCount : 20).join(" ")}
-                                </h3>
-                            }
-                            <div className="flex items-center gap-3">
-                                {/* Available Props:
+                    <Link key={newsPost.id} href={`/news/${newsPost.slug}`}>
+                        {imageWrap === true ?
+                            <div className={divClass ? divClass : 'w-full'} key={newsPost.id}>
+                                {hasDetails === false || imageFirst === true ? null :
+                                    <h3 className={titleClass ? titleClass : 'font-bold text-xl'}>
+                                        {newsPost.title.rendered.split(" ").slice(0, titleCount ? titleCount : 20).join(" ")}
+                                    </h3>
+                                }
+                                <div className="flex items-center gap-3">
+                                    {/* Available Props:
                             media, newsPost, width, height, quality */}
-                            
-                                <NewsImage media={media} newsPost={newsPost} width={width} height={height} />
-                                
-                                {hasDetails === false || imageFirst === true ?
+
+                                    <NewsImage media={media} newsPost={newsPost} width={width} height={height} />
+
+                                    {hasDetails === false || imageFirst === true ?
                                         <h3 className={titleClass ? titleClass : 'font-bold text-xl'}>
-                                        
-                                            {newsPost.title.split(" ").slice(0, titleCount ? titleCount : 20).join(" ")}
-                                            
+
+                                            {newsPost.title.rendered.split(" ").slice(0, titleCount ? titleCount : 20).join(" ")}
+
                                         </h3>
                                         :
                                         <p>
-                                            {newsPost.content.split(" ").slice(0, wordCount ? wordCount : 20).join(" ")}
+                                            {newsPost.content.rendered.split(" ").slice(0, wordCount ? wordCount : 20).join(" ")}
                                         </p>
-                                }
+                                    }
+                                </div>
                             </div>
-                        </div>
 
-                        :
-                        <div className={divClass ? divClass : 'w-full'} key={newsPost._id}>
-                            {imageFirst === true ? null :
-                                <h3 className={titleClass ? titleClass : 'font-bold text-xl'}>
-                                
-                                    {newsPost.title.split(" ").slice(0, titleCount ? titleCount : 20).join(" ")}
-                                    
-                                </h3>
-                            }
-                            
-                            {hasImage === false ? null : 
-                                        
-                            <NewsImage media={media} newsPost={newsPost} width={width} height={width} />
-                        
+                            :
+                            <div className={divClass ? divClass : 'w-full'} key={newsPost.id}>
+                                {imageFirst === true ? null :
+                                    <h3 className={titleClass ? titleClass : 'font-bold text-xl'}>
+
+                                        {newsPost.title.rendered.split(" ").slice(0, titleCount ? titleCount : 20).join(" ")}
+
+                                    </h3>
+                                }
+
+                                {hasImage === false ? null :
+
+                                    <NewsImage media={media} newsPost={newsPost} width={width} height={width} />
+
+                                }
+
+                                {imageFirst === true ?
+                                    <h3 className={titleClass ? titleClass : 'font-bold text-xl'}>
+
+                                        {newsPost.title.rendered.split(" ").slice(0, titleCount ? titleCount : 20).join(" ")}
+
+                                    </h3>
+                                    : null
+                                }
+                                {hasDetails === false ? null : <p>{newsPost.content.rendered.split(" ").slice(0, wordCount ? wordCount : 20).join(" ")}</p>}
+
+                            </div>
                         }
-                            
-                            {imageFirst === true ? 
-                                <h3 className={titleClass ? titleClass : 'font-bold text-xl'}>
-                                
-                                    {newsPost.title.split(" ").slice(0, titleCount ? titleCount : 20).join(" ")}
-                                    
-                                </h3>
-                                : null
-                            }
-                            {hasDetails === false ? null : <p>{newsPost.content.split(" ").slice(0, wordCount ? wordCount : 20).join(" ")}</p>}
-
-                        </div>
-                    }
                     </Link>
             ))
     )

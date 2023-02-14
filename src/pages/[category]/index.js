@@ -22,12 +22,25 @@ const NewsCategory = ({ news, categories, media }) => {
 
                 <div className="p-5 gap-5">
 
+                    {/* {
+                        categories.map(category => (
+                            decodeURIComponent(category.slug) === categorySlug ?
+                                <div key={category.id} className="container bg-gray-200 p-4">
+                                    <h2 className="text-2xl font-bold">বিষয়ঃ {category.name}</h2>
+
+                                </div>
+                                : null
+                        ))
+                    } */}
+
                     {
-                        categories.filter(category => category.slug === categorySlug).map(category => {
-                            categoryId = category._id
+                        categories.filter(category => decodeURIComponent(category.slug) == categorySlug).map(category => {
+                            categoryId = category.id
+
                             return (
-                                <div key={category._id} className="container bg-gray-200 p-4">
-                                    <h2 className="text-2xl font-bold">Category: {category.title}</h2>
+                                <div key={category.id} className="container bg-gray-200 p-4">
+                                    <h2 className="text-2xl font-bold">বিষয়ঃ {category.name}</h2>
+
                                 </div>
                             )
                         })
@@ -49,7 +62,7 @@ export default NewsCategory
 
 export const getServerSideProps = async (context) => {
     const [resPosts, resCats, resMedia] = await Promise.all([
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/news`),
+        fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts`),
         fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`),
         fetch(`${process.env.NEXT_PUBLIC_API_URL}/media`)
     ])

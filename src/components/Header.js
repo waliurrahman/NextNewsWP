@@ -49,13 +49,13 @@ const Header = ({ categories, news, media }) => {
                 <div className="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start">
                   <div className="hidden sm:ml-6 sm:block">
                     <div className="flex space-x-3">
-                      <Link href={`/`} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</Link>
+                      <Link href={`/`} className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">প্রচ্ছদ</Link>
                       {categories ? categories.map((category) => (
                         <Link
-                          key={category._id}
+                          key={category.id}
                           href={`/${category.slug}`}
                           className="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-                          {category.title}
+                          {category.name}
                         </Link>
                       )) : <p>No Categories Found</p>}
                     </div>
@@ -67,14 +67,14 @@ const Header = ({ categories, news, media }) => {
 
             <Disclosure.Panel className="sm:hidden">
               <div className="space-y-1 px-2 pt-2 pb-3">
-                <Link href={`/`} className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">Home</Link>
+                <Link href={`/`} className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">প্রচ্ছদ</Link>
                 {categories ? categories.map((category) => (
                   <Disclosure.Button
-                    key={category._id}
+                    key={category.id}
                     as="a"
                     href={category.slug}
                     className="text-gray-300 hover:bg-gray-700 hover:text-white block px-3 py-2 rounded-md text-base font-medium">
-                    {category.title}
+                    {category.name}
                   </Disclosure.Button>
                 )) : <p>No Categories Found</p>}
               </div>

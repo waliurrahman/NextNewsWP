@@ -11,8 +11,9 @@ import NewsLoop from '@/components/NewsLoop'
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({ news, categories, media }) {
-
+  
   return (
+    
     <>
       <Head>
         <title>Home Page | NextNEWS</title>
@@ -107,7 +108,7 @@ export default function Home({ news, categories, media }) {
 
 export const getServerSideProps = async (context) => {
   const [resPosts, resCats, resMedia] = await Promise.all([
-    fetch(`${process.env.NEXT_PUBLIC_API_URL}/news`),
+    fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts`),
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`),
     fetch(`${process.env.NEXT_PUBLIC_API_URL}/media`)
   ])

@@ -1,5 +1,5 @@
 {
-  "name": "news-portal",
+  "name": "wp-news",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -26,5 +26,20 @@
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.4"
-  }
+  },
+  "description": "This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).",
+  "main": "db.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/waliurrahman/NextNews.git"
+  },
+  "keywords": [
+    "wp-news"
+  ],
+  "author": "Tag Bracket",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/waliurrahman/NextNews/issues"
+  },
+  "homepage": "https://github.com/waliurrahman/NextNews#readme"
 }
