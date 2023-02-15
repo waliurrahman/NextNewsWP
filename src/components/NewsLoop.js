@@ -22,7 +22,7 @@ const NewsLoop = ({ categories, news, media, categorySlug, items, offset, hasIma
                 || (newsSlug && post.slug.includes(newsSlug))
                 || (!categoryId && !newsSlug)
             )
-            .reverse()
+            // .reverse()
             .slice(offset || 0, items || 5)
             .map((newsPost) => (
 

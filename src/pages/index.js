@@ -32,14 +32,14 @@ export default function Home({ news, categories, media }) {
               <NewsLoop categorySlug='lead-news' categories={categories} news={news} media={media} items={1} titleClass={'text-2xl py-2 font-bold'} imageFirst={true} wordCount={45} width={500} />
             </div>
             <div className="w-1/2 p-2 border-2">
-              <h2 className="font-bold text-2xl text-white bg-green-700 py-1 px-3">National</h2>
+              <h2 className="font-bold text-2xl text-zinc-800 bg-gray-300 py-1 px-3">জাতীয়</h2>
               {/* Available Props:
               categories, news, media, categorySlug, items, hasImage, hasDetails, imageWrap, divClass, titleClass, height, width, wordCount, titleCount */}
-              <NewsLoop categorySlug={'national'} categories={categories} media={media} news={news} items={3} imageWrap={true} hasImage={true} hasDetails={true} wordCount={13} titleClass={'text-lg font-bold'} divClass={'border-dashed border-b-[1px] border-gray-300 py-2'} height={100} width={100} />
+              <NewsLoop categorySlug={'জাতীয়'} categories={categories} media={media} news={news} items={3} imageWrap={true} hasImage={true} hasDetails={true} wordCount={13} titleClass={'text-lg font-bold'} divClass={'border-dashed border-b-[1px] border-gray-300 py-2'} height={100} width={100} />
             </div>
           </div>
           <div className="sports w-full">
-            <h2 className="font-bold text-2xl text-white bg-red-600 py-1 px-3">Sports</h2>
+            <h2 className="font-bold text-2xl text-zinc-800 bg-gray-300 py-1 px-3">Sports</h2>
 
             <NewsLoop categorySlug={'sports'} categories={categories} media={media} news={news} items={1} offset={0} imageWrap={true} hasImage={true} hasDetails={true} wordCount={75} titleClass={'text-2xl font-bold'} divClass={'basis-1/2 border-dashed border-b-[1px] border-gray-300 py-2'} height={300} width={260} />
 
@@ -49,13 +49,13 @@ export default function Home({ news, categories, media }) {
           </div>
           <div className="lifestyle entertainment w-full flex gap-3">
             <div className="w-1/3">
-              <h2 className="font-bold text-2xl text-white bg-purple-600 py-1 px-3">Lifestyle</h2>
+              <h2 className="font-bold text-2xl text-zinc-800 bg-gray-300 py-1 px-3">Lifestyle</h2>
 
               <NewsLoop categorySlug={'lifestyle'} categories={categories} media={media} news={news} items={2} offset={0} imageWrap={false} hasImage={true} imageFirst={true} hasDetails={true} wordCount={50} titleCount={10} titleClass={'text-2xl font-bold'} divClass={'border-dashed border-b-[1px] border-gray-300 py-2'} height={300} width={300} />
             </div>
 
             <div className="w-2/3">
-              <h2 className="font-bold text-2xl text-white bg-cyan-600 py-1 px-3">Entertainment</h2>
+              <h2 className="font-bold text-2xl text-zinc-800 bg-gray-300 py-1 px-3">Entertainment</h2>
               <div className="flex gap-3">
                 <div className="w-1/2">
                   <NewsLoop categorySlug={'entertainment'} categories={categories} media={media} news={news} items={2} offset={0} imageWrap={false} hasImage={true} imageFirst={true} hasDetails={false} wordCount={75} titleCount={10} titleClass={'text-md font-bold'} divClass={'border-dashed border-b-[1px] border-gray-300 py-2'} height={300} width={300} />
@@ -71,14 +71,14 @@ export default function Home({ news, categories, media }) {
           <div className="w-full flex gap-3">
 
             <div className="science-tech w-2/3">
-              <h2 className="font-bold text-2xl text-white bg-rose-600 py-1 px-3">Science & Tech</h2>
+              <h2 className="font-bold text-2xl text-zinc-800 bg-gray-300 py-1 px-3">Science & Tech</h2>
                 <div className="">
                   <NewsLoop categorySlug={'science-tech'} categories={categories} media={media} news={news} items={3} offset={0} imageWrap={true} hasImage={true} imageFirst={false} hasDetails={true} wordCount={30} titleCount={10} titleClass={'text-lg font-bold'} divClass={'border-dashed border-b-[1px] border-gray-300 py-2'} height={200} width={200} />
                 </div>
             </div>
 
             <div className="education w-1/3">
-              <h2 className="font-bold text-2xl text-white bg-yellow-600 py-1 px-3">Education</h2>
+              <h2 className="font-bold text-2xl text-zinc-800 bg-gray-300 py-1 px-3">Education</h2>
 
               <NewsLoop categorySlug={'education'} categories={categories} media={media} news={news} items={2} offset={0} imageWrap={false} hasImage={true} imageFirst={true} hasDetails={false} wordCount={50} titleCount={10} titleClass={'text-md font-bold'} divClass={'border-dashed border-b-[1px] border-gray-300 py-2'} height={300} width={300} />
             </div>
@@ -92,12 +92,12 @@ export default function Home({ news, categories, media }) {
             categories, news, media, categorySlug, items, hasImage, hasDetails, imageWrap, divClass, titleClass, height, width, wordCount, titleCount */}
           <NewsLoop categories={categories} media={media} news={news} items={5} hasImage={true} imageWrap={true} hasDetails={false} height={100} width={100} titleClass={'text-sm font-bold'} divClass={'border-dashed border-b-[1px] border-gray-300 py-2'} titleCount={15} />
 
-          <h2 className="font-bold text-2xl text-white bg-blue-900 py-1 px-3 mt-3">Politics</h2>
+          <h2 className="font-bold text-2xl text-zinc-800 bg-gray-300 py-1 px-3 mt-3">Politics</h2>
 
           <NewsLoop categorySlug={'politics'} categories={categories} media={media} news={news} items={5} hasImage={true} imageWrap={true} hasDetails={false} height={80} width={100} titleClass={'text-sm font-bold'} divClass={'border-dashed border-b-[1px] border-gray-300 py-2'} titleCount={15} />
 
 
-          <h2 className="font-bold text-2xl text-white bg-orange-600 py-1 px-3 mt-3">International</h2>
+          <h2 className="font-bold text-2xl text-zinc-800 bg-gray-300 py-1 px-3 mt-3">International</h2>
 
           <NewsLoop categorySlug={'international'} categories={categories} media={media} news={news} items={5} hasImage={true} imageFirst={true} imageWrap={false} hasDetails={false} height={250} width={300} titleClass={'text-md font-bold'} divClass={'border-dashed border-b-[1px] border-gray-300 py-2'} titleCount={15} />
         </div>

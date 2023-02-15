@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Disclosure, Menu, Transition } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import NewsLoop from "./NewsLoop";
+import Image from "next/image";
 
 const Header = ({ categories, news, media }) => {
   return (
@@ -25,12 +26,22 @@ const Header = ({ categories, news, media }) => {
         :
         null
       }
+      <div className="flex w-full justify-between text-center items-center">
+      <div className="">Date</div>  
       <div className="text-center p-7">
-        <h1 className="logo text-5xl font-bold text-gray-700"><Link href={`/`}>Next<span className="text-red-700">NEWS</span></Link></h1>
-        <h3 className="text-sm text-gray-500">Fastest NewsCMS You Would Ever Need!</h3>
+        <Link href={`/`}>
+          <Image
+          src={'https://prothomkotha.com/wp-content/uploads/2023/01/prothomkotha-logo.png'}
+          alt={'Daily Prothom Kotha'}
+          width={300}
+          height={70}
+          />
+        </Link>
+      </div>
+      <div className="">English</div>
       </div>
 
-      <Disclosure as="nav" className="bg-gray-800">
+      <Disclosure as="nav" className="bg-zinc-900">
         {({ open }) => (
           <>
             <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 text-white">

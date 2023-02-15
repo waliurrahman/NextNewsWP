@@ -6,7 +6,8 @@ import NewsLoop from '@/components/NewsLoop'
 
 const SingleNews = ({ news, categories, media }) => {
     const newsSlug = useRouter().query.news
-    let newsId
+    
+    // let newsId
     return (
         <>
             <Head>
@@ -39,31 +40,40 @@ const SingleNews = ({ news, categories, media }) => {
 export default SingleNews
 
 export const getServerSideProps = async (context) => {
-    const [resPosts, resCats, resMedia] = await Promise.all([
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts`),
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`),
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/media`)
-    ])
-
-    let news, categories, media;
-
-    try {
-        news = await resPosts.json();
-        categories = await resCats.json();
-        media = await resMedia.json();
-    } catch (error) {
-        console.error(error);
-        <p>Error Fetching API</p>
+    const { news: newsSlug } = context.query
+    let newsId
+  
+    const resPosts = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts`)
+    const news = await resPosts.json()
+    const singleNews = news.find(post => decodeURIComponent(post.slug) === newsSlug)
+    if (singleNews) {
+      newsId = singleNews.id
+      console.log(newsId)
+    } else {
+      // handle case where category with matching slug is not found
+      console.error(`News with slug "${newsSlug}" not found.`)
     }
-
-    // console.log("News:", news);
-    // console.log("Categories:", categories);
-
+  
+    const resCats = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`)
+    const resMedia = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/media`)
+    let categories, media
+  
+    try {
+      categories = await resCats.json()
+      media = await resMedia.json()
+    } catch (error) {
+      console.error(error)
+      return {
+        notFound: true
+      }
+    }
+  
     return {
         props: {
-            news,
-            categories,
-            media
-        },
-    };
-};
+          news,
+          categories,
+          media,
+          newsId: null
+        }
+      }
+  }

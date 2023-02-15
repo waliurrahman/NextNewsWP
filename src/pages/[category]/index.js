@@ -4,10 +4,15 @@ import { useRouter } from 'next/router'
 import React from 'react'
 import NewsLoop from '@/components/NewsLoop'
 
-const NewsCategory = ({ news, categories, media }) => {
+const NewsCategory = ({ news, categories, media, categoryId }) => {
     const categorySlug = useRouter().query.category
+    
+    // let categoryId
+    // categories.filter(category => decodeURIComponent(category.slug) == categorySlug).map(category => {
+    //     categoryId = category.id
+    //     console.log(categoryId)
+    // })
 
-    let categoryId
     return (
         <>
             <Head>
@@ -35,11 +40,11 @@ const NewsCategory = ({ news, categories, media }) => {
 
                     {
                         categories.filter(category => decodeURIComponent(category.slug) == categorySlug).map(category => {
-                            categoryId = category.id
+                            // categoryId = category.id
 
                             return (
                                 <div key={category.id} className="container bg-gray-200 p-4">
-                                    <h2 className="text-2xl font-bold">বিষয়ঃ {category.name}</h2>
+                                    <h2 className="text-2xl font-bold">বিষয়ঃ {category.id + category.name}</h2>
 
                                 </div>
                             )
@@ -48,7 +53,7 @@ const NewsCategory = ({ news, categories, media }) => {
                     <div className="grid grid-cols-2 gap-4">
                         {/* Available Props:
                         categories, news, media, categorySlug, items, hasImage, hasDetails, imageWrap, divClass, titleClass, height, width, wordCount, titleCount */}
-                        <NewsLoop categorySlug={categorySlug} categories={categories} news={news} media={media} imageWrap={true} items={20} width={125} height={100} wordCount={22} titleCount={10} />
+                        <NewsLoop categorySlug={categorySlug} categories={categories} news={news} media={media} hasImage={true} imageWrap={false} items={20} width={125} height={100} wordCount={22} titleCount={10} />
                     </div>
 
                 </div>
@@ -61,31 +66,41 @@ const NewsCategory = ({ news, categories, media }) => {
 export default NewsCategory
 
 export const getServerSideProps = async (context) => {
-    const [resPosts, resCats, resMedia] = await Promise.all([
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts`),
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`),
-        fetch(`${process.env.NEXT_PUBLIC_API_URL}/media`)
-    ])
-
-    let news, categories, media;
-
-    try {
-        news = await resPosts.json();
-        categories = await resCats.json();
-        media = await resMedia.json();
-    } catch (error) {
-        console.error(error);
-        <p>Error Fetching API</p>
+    const { category: categorySlug } = context.query
+    let categoryId
+  
+    // find the ID of the category with matching slug
+    const resCats = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/categories`)
+    const categories = await resCats.json()
+    const category = categories.find(cat => decodeURIComponent(cat.slug) === categorySlug)
+    if (category) {
+      categoryId = category.id
+    } else {
+      // handle case where category with matching slug is not found
+      console.error(`Category with slug "${categorySlug}" not found.`)
     }
-
-    // console.log("News:", news);
-    // console.log("Categories:", categories);
-
+  
+    // fetch news with the matching category ID
+    const resPosts = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/posts?categories=${categoryId}`)
+    const resMedia = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/media`)
+    let news, media
+  
+    try {
+      news = await resPosts.json()
+      media = await resMedia.json()
+    } catch (error) {
+      console.error(error)
+      return {
+        notFound: true
+      }
+    }
+  
     return {
-        props: {
-            news,
-            categories,
-            media
-        },
-    };
-};
+      props: {
+        news,
+        categories,
+        media,
+        categoryId
+      }
+    }
+  }
